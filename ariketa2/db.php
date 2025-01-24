@@ -5,7 +5,7 @@ function konexioaSortu()
 
     $servername = "localhost:3306";
     $username = "root";
-    $password = "1mg3";
+    $password = "1MG2024";
     $dbname = "markatze";
 
     // Create connection
