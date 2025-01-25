@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8" />
     <title>Podioa</title>
@@ -8,21 +9,26 @@
             border: 2px solid black;
             width: 250px;
         }
+
         .border {
             border: 2px solid black;
             text-align: center;
         }
+
         button {
             margin: 10px;
         }
+
         .green {
             background-color: green;
         }
+
         .red {
             background-color: red;
         }
     </style>
 </head>
+
 <body>
     <?php
     require_once("db.php");
@@ -83,41 +89,41 @@
         });
 
         function taulaBirkargatu() {
-    
-    $.ajax({
-        url: "lortuGidariak.php",
-        type: "GET",
-        data: { akzioa: "lortuGidariak" }
-    })
-        .done(function (bueltanDatorrenInformazioa) {
-            
-            var info = JSON.parse(bueltanDatorrenInformazioa);
-            if (info.kopurua > 0) {
-                $(".zerrenda").html("");
-                $(".zerrenda").append("<tr>");
-                $(".zerrenda").append("<th class='border'>Postua</th>");
-                $(".zerrenda").append("<th class='border'>Dortsala</th>");
-                $(".zerrenda").append("<th class='border'>Izena</th>");
-                $(".zerrenda").append("</tr>");
-                for (var i = 0; i < info.kopurua; i++) {
-                    $(".zerrenda").append("<tr>");
-                    $(".zerrenda").append("<td class='border'>" + info[i].Postua + "</td>");
-                    $(".zerrenda").append("<td class='border'>" + info[i].Dortsala + "</td>");
-                    $(".zerrenda").append("<td class='border'>" + info[i].Izena + "</td>");
-                    $(".zerrenda").append("</tr>");
-                }
-            } else {
-                alert("Ez da elementurik kargatu");
-            }
 
-        })
-        .fail(function () {
-            alert("gaizki joan da");
-        })
-        .always(function () {
-            // alert("aa");
-        });
-}
+            $.ajax({
+                url: "lortuGidariak.php",
+                type: "GET",
+                data: { akzioa: "lortuGidariak" }
+            })
+                .done(function (bueltanDatorrenInformazioa) {
+
+                    var info = JSON.parse(bueltanDatorrenInformazioa);
+                    if (info.kopurua > 0) {
+                        $(".zerrenda").html("");
+                        $(".zerrenda").append("<tr>");
+                        $(".zerrenda").append("<th class='border'>Postua</th>");
+                        $(".zerrenda").append("<th class='border'>Dortsala</th>");
+                        $(".zerrenda").append("<th class='border'>Izena</th>");
+                        $(".zerrenda").append("</tr>");
+                        for (var i = 0; i < info.kopurua; i++) {
+                            $(".zerrenda").append("<tr>");
+                            $(".zerrenda").append("<td class='border'>" + info[i].Postua + "</td>");
+                            $(".zerrenda").append("<td class='border'>" + info[i].Dortsala + "</td>");
+                            $(".zerrenda").append("<td class='border'>" + info[i].Izena + "</td>");
+                            $(".zerrenda").append("</tr>");
+                        }
+                    } else {
+                        alert("Ez da elementurik kargatu");
+                    }
+
+                })
+                .fail(function () {
+                    alert("gaizki joan da");
+                })
+                .always(function () {
+                    // alert("aa");
+                });
+        }
 
         function taulaEguneratu() {
             const dortsala = $("#dortsala").val();
@@ -128,13 +134,14 @@
                 type: "GET",
                 data: { dortsala: dortsala, postua: postua }
             })
-            .done(function (data) {
-                $("#taulaContainer").html(data);
-            })
-            .fail(function () {
-                alert("Errorea postua eguneratzean.");
-            });
+                .done(function (data) {
+                    $("#taulaContainer").html(data);
+                })
+                .fail(function () {
+                    alert("Errorea postua eguneratzean.");
+                });
         }
     </script>
 </body>
+
 </html>
